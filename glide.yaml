@@ -8,7 +8,7 @@ import:
   version: 0.5.x
 - package: github.com/ethereum/go-ethereum
   version: f1.8.3
-  repo: https://github.com/tendermint/go-ethereum.git
+  repo: https://github.com/ethereum/go-ethereum.git
 - package: github.com/spf13/pflag
   version: master
 - package: gopkg.in/urfave/cli.v1
