@@ -11,9 +11,9 @@ imports:
   - btcec
 - name: github.com/edsrzf/mmap-go
   version: 0bce6a6887123b67a60366d2c9fe2dfb74289d2e
-- name: github.com/ethereum/go-ethereum
-  version: d9e23666755ebeb632dc8c3f902650971594e5a7
-  repo: https://github.com/tendermint/go-ethereum.git
+- name: github.com/huangjimmy/go-ethereum
+  version: 329ac18ef617d0238f71637bffe78f028b0f13f7
+  repo: https://github.com/huangjimmy/go-ethereum.git
   subpackages:
   - accounts
   - accounts/keystore
