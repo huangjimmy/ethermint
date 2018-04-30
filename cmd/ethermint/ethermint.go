@@ -19,9 +19,9 @@ import (
 
 	cmn "github.com/tendermint/tmlibs/common"
 
-	abciApp "github.com/tendermint/ethermint/app"
-	emtUtils "github.com/tendermint/ethermint/cmd/utils"
-	"github.com/tendermint/ethermint/ethereum"
+	abciApp "github.com/huangjimmy/ethermint/app"
+	emtUtils "github.com/huangjimmy/ethermint/cmd/utils"
+	"github.com/huangjimmy/ethermint/ethereum"
 )
 
 func ethermintCmd(ctx *cli.Context) error {
@@ -31,7 +31,7 @@ func ethermintCmd(ctx *cli.Context) error {
 
 	// Step 2: If we can invoke `tendermint node`, let's do so
 	// in order to make ethermint as self contained as possible.
-	// See Issue https://github.com/tendermint/ethermint/issues/244
+	// See Issue https://github.com/huangjimmy/ethermint/issues/244
 	canInvokeTendermintNode := canInvokeTendermint(ctx)
 	if canInvokeTendermintNode {
 		tendermintHome := tendermintHomeFromEthermint(ctx)
@@ -85,7 +85,7 @@ func ethermintCmd(ctx *cli.Context) error {
 
 	srv.SetLogger(emtUtils.EthermintLogger().With("module", "abci-server"))
 
-	if _, err := srv.Start(); err != nil {
+	if _,err := srv.Start(); err != nil {
 		fmt.Println(err)
 		os.Exit(1)
 	}
@@ -134,13 +134,14 @@ func startNode(ctx *cli.Context, stack *ethereum.Node) {
 		}
 		// Listen for wallet event till termination
 		for event := range events {
-			if event.Arrive {
+			if event.Kind != accounts.WalletDropped {
 				if err := event.Wallet.Open(""); err != nil {
 					log.Warn("New wallet appeared, failed to open", "url",
 						event.Wallet.URL(), "err", err)
 				} else {
+					var status, _ = event.Wallet.Status();
 					log.Info("New wallet appeared", "url", event.Wallet.URL(),
-						"status", event.Wallet.Status())
+						"status", status)
 					event.Wallet.SelfDerive(accounts.DefaultBaseDerivationPath,
 						stateReader)
 				}

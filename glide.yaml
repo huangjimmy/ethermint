@@ -1,4 +1,4 @@
-package: github.com/tendermint/ethermint
+package: github.com/huangjimmy/ethermint
 import:
 - package: github.com/tendermint/tendermint
   version: 0.10.x
@@ -7,11 +7,17 @@ import:
 - package: github.com/tendermint/abci
   version: 0.5.x
 - package: github.com/ethereum/go-ethereum
-  version: f1.8.3
-  repo: https://github.com/ethereum/go-ethereum.git
+  version: 1b4c3a0f1d98ab246991c96fb3eb081ec7d0e90d
+  repo: https://github.com/huangjimmy/go-ethereum.git
 - package: github.com/spf13/pflag
   version: master
 - package: gopkg.in/urfave/cli.v1
   version: 1.x
 - package: github.com/mattn/go-colorable
   version: 0.x
+- package: github.com/tendermint/go-wire
+  version: 0.6.x
+- package: github.com/prometheus/prometheus
+  version: 2.1.0
+- package: github.com/tendermint/go-crypto
+  version: 0.2.x

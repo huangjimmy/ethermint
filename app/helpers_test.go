@@ -23,12 +23,12 @@ import (
 	"github.com/ethereum/go-ethereum/node"
 	"github.com/ethereum/go-ethereum/rlp"
 
-	"github.com/tendermint/ethermint/cmd/utils"
-	"github.com/tendermint/ethermint/ethereum"
+	"github.com/huangjimmy/ethermint/cmd/utils"
+	"github.com/huangjimmy/ethermint/ethereum"
 )
 
 var (
-	receiverAddress = common.StringToAddress("0x1234123412341234123412341234123412341234")
+	receiverAddress = common.HexToAddress("0x1234123412341234123412341234123412341234")
 )
 
 // implements: tendermint.rpc.client.HTTPClient
@@ -72,7 +72,7 @@ func createTx(t *testing.T, key *ecdsa.PrivateKey, nonce uint64, to common.Addre
 	signer := ethTypes.HomesteadSigner{}
 
 	transaction, err := ethTypes.SignTx(
-		ethTypes.NewTransaction(nonce, to, amount, gasLimit, gasPrice, data),
+		ethTypes.NewTransaction(nonce, to, amount, gasLimit.Uint64(), gasPrice, data),
 		signer,
 		key,
 	)

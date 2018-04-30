@@ -17,7 +17,7 @@ import (
 
 	abciTypes "github.com/tendermint/abci/types"
 
-	emtTypes "github.com/tendermint/ethermint/types"
+	emtTypes "github.com/huangjimmy/ethermint/types"
 )
 
 //----------------------------------------------------------------------
@@ -131,7 +131,10 @@ func (es *EthState) UpdateHeaderWithTimeInfo(
 }
 
 func (es *EthState) GasLimit() big.Int {
-	return big.Int(*es.work.gp)
+	var gasLimit = big.Int{}
+	var gasPool = uint64(*es.work.gp)
+	gasLimit.SetUint64(gasPool)
+	return gasLimit
 }
 
 //----------------------------------------------------------------------
@@ -173,8 +176,8 @@ type workState struct {
 // nolint: unparam
 func (ws *workState) accumulateRewards(strategy *emtTypes.Strategy) {
 
-	ethash.AccumulateRewards(ws.state, ws.header, []*ethTypes.Header{})
-	ws.header.GasUsed = ws.totalUsedGas
+	//ethash.AccumulateRewards(ws.state, ws.header, []*ethTypes.Header{})
+	ws.header.GasUsed = ws.totalUsedGas.Uint64()
 }
 
 // Runs ApplyTransaction against the ethereum blockchain, fetches any logs,
@@ -184,6 +187,8 @@ func (ws *workState) deliverTx(blockchain *core.BlockChain, config *eth.Config,
 	tx *ethTypes.Transaction) abciTypes.Result {
 
 	ws.state.Prepare(tx.Hash(), blockHash, ws.txIndex)
+	var totalUsedGas = ws.totalUsedGas.Uint64()
+
 	receipt, _, err := core.ApplyTransaction(
 		chainConfig,
 		blockchain,
@@ -192,7 +197,7 @@ func (ws *workState) deliverTx(blockchain *core.BlockChain, config *eth.Config,
 		ws.state,
 		ws.header,
 		tx,
-		ws.totalUsedGas,
+		&totalUsedGas,
 		vm.Config{EnablePreimageRecording: config.EnablePreimageRecording},
 	)
 	if err != nil {
@@ -217,7 +222,7 @@ func (ws *workState) deliverTx(blockchain *core.BlockChain, config *eth.Config,
 func (ws *workState) commit(blockchain *core.BlockChain, db ethdb.Database) (common.Hash, error) {
 
 	// Commit ethereum state and update the header.
-	hashArray, err := ws.state.CommitTo(db.NewBatch(), false) // XXX: ugh hardforks
+	hashArray, err := ws.state.Commit(false) // XXX: ugh hardforks
 	if err != nil {
 		return common.Hash{}, err
 	}

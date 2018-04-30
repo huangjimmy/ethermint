@@ -2,7 +2,7 @@
 
 Ethereum powered by Tendermint consensus
 
-[![Build Status](https://travis-ci.org/tendermint/ethermint.svg?branch=develop)](https://travis-ci.org/tendermint/ethermint) [![License](https://img.shields.io/badge/license-GPLv3.0%2B-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.html) [![Documentation Status](https://readthedocs.org/projects/ethermint/badge/?version=master)](http://ethermint.readthedocs.io/en/latest/?badge=master)
+[![Build Status](https://travis-ci.org/github.com/huangjimmy/ethermint.svg?branch=develop)](https://travis-ci.org/github.com/huangjimmy/ethermint) [![License](https://img.shields.io/badge/license-GPLv3.0%2B-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.html) [![Documentation Status](https://readthedocs.org/projects/ethermint/badge/?version=master)](http://ethermint.readthedocs.io/en/latest/?badge=master)
 
 
 The latest version of Ethermint only works with Tendermint up to 0.14.0.
@@ -18,9 +18,9 @@ install whichever tooling suits you best and [check out the documentation](http:
 See the [install documentation](http://ethermint.readthedocs.io/en/master/getting-started/install.html). For developers:
 
 ```
-go get -u -d github.com/tendermint/ethermint
+go get -u -d github.com/huangjimmy/ethermint
 go get -u -d github.com/tendermint/tendermint
-cd $GOPATH/src/github.com/tendermint/ethermint
+cd $GOPATH/src/github.com/huangjimmy/ethermint
 make install
 cd ../tendermint
 make install
@@ -31,7 +31,7 @@ make install
 #### Initialisation
 To get started, you need to initialise the genesis block for tendermint core and go-ethereum. We provide initialisation
 files with reasonable defaults and money allocated into a predefined account. If you installed from binary or docker
-please download these default files [here](https://github.com/tendermint/ethermint/tree/develop/setup).
+please download these default files [here](https://github.com/huangjimmy/ethermint/tree/develop/setup).
 
 You can choose where to store the ethermint files with `--datadir`. For this guide, we will use `~/.ethermint`, which is a reasonable default in most cases.
 
@@ -75,7 +75,7 @@ Thank you for considering making contributions to Ethermint!
 Check out the [contributing guidelines](.github/CONTRIBUTING.md) for information
 on getting starting with contributing.
 
-See the [open issues](https://github.com/tendermint/ethermint/issues) for
+See the [open issues](https://github.com/huangjimmy/ethermint/issues) for
 things we need help with!
 
 ## Support

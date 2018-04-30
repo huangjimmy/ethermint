@@ -3,7 +3,7 @@
 # -x for debug
 set -eux
 
-# count of tendermint/ethermint node
+# count of github.com/huangjimmy/ethermint node
 N=4
 
 # Docker version and info

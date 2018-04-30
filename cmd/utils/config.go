@@ -11,7 +11,7 @@ import (
 	"github.com/ethereum/go-ethereum/node"
 	"github.com/ethereum/go-ethereum/params"
 
-	"github.com/tendermint/ethermint/ethereum"
+	"github.com/huangjimmy/ethermint/ethereum"
 
 	rpcClient "github.com/tendermint/tendermint/rpc/lib/client"
 )
@@ -101,8 +101,8 @@ func SetEthermintNodeConfig(cfg *node.Config) {
 // SetEthermintEthConfig takes a ethereum configuration and applies ethermint specific configuration
 // #unstable
 func SetEthermintEthConfig(cfg *eth.Config) {
-	cfg.MaxPeers = 0
-	cfg.PowFake = true
+	//cfg.MaxPeers = 0
+	//cfg.PowFake = true
 }
 
 // MakeDataDir retrieves the currently requested data directory

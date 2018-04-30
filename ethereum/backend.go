@@ -17,7 +17,7 @@ import (
 
 	rpcClient "github.com/tendermint/tendermint/rpc/lib/client"
 
-	emtTypes "github.com/tendermint/ethermint/types"
+	emtTypes "github.com/huangjimmy/ethermint/types"
 )
 
 //----------------------------------------------------------------------
@@ -188,6 +188,6 @@ func (NullBlockProcessor) ValidateBody(*ethTypes.Block) error { return nil }
 // ValidateState does not validate anything
 // #unstable
 func (NullBlockProcessor) ValidateState(block, parent *ethTypes.Block, state *state.StateDB,
-	receipts ethTypes.Receipts, usedGas *big.Int) error {
+	receipts ethTypes.Receipts, usedGas uint64) error {
 	return nil
 }
