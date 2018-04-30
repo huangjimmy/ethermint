@@ -56,6 +56,12 @@ var (
 		Value: GenesisTargetGasLimit.Uint64(),
 	}
 
+	GCModeFlag = cli.StringFlag{
+		Name:  "gcmode",
+		Usage: `Blockchain garbage collection mode ("full", "archive")`,
+		Value: "full",
+	}
+
 	// WithTendermintFlag asks to start Tendermint
 	// `tendermint init` and `tendermint node` when `ethermint init`
 	// and `ethermint` are invoked respectively.
