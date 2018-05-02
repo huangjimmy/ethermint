@@ -15,3 +15,9 @@ import:
   version: 1.x
 - package: github.com/mattn/go-colorable
   version: 0.x
+- package: github.com/tendermint/go-wire
+  version: 0.6.x
+- package: github.com/prometheus/prometheus
+  version: 2.1.0
+- package: github.com/tendermint/go-crypto
+  version: 0.2.x
